@@ -1,7 +1,7 @@
 <?php
 class Constants
 {
-    //DATABASE DETAILS
+    
     static $DB_SERVER="localhost";
     static $DB_NAME="bebeburada";
     static $USERNAME="root";
@@ -9,9 +9,9 @@ class Constants
     //STATEMENTS
     static $SQL_SELECT_ALL="SELECT * FROM urunler";
 }
-class Spacecrafts
+class Products
 {
-    /*******************************************************************************************************************************************/
+    
     /*
        1.CONNECT TO DATABASE.
        2. RETURN CONNECTION OBJECT
@@ -29,7 +29,7 @@ class Spacecrafts
             return $con;
         }
     }
-    /*******************************************************************************************************************************************/
+   
     /*
        1.SELECT FROM DATABASE.
     */
@@ -41,7 +41,7 @@ class Spacecrafts
             $result=$con->query(Constants::$SQL_SELECT_ALL);
             if($result->num_rows>0)
             {
-                $spacecrafts=array();
+                $Products=array();
                 $imageArray=array();
 
 
@@ -53,19 +53,14 @@ class Spacecrafts
                 	$resultImg=$con->query($imageSQL);
                 	$rowImage=$resultImg->fetch_array();
 
-                	// while ($rowImage=$resultImg->fetch_array()) {
-                		
-                	// 	array_push($imageArray, array($rowImage["fotoyolu"]));
-                	// }
 
-
-                    array_push($spacecrafts, array("id"=>$row["urunID"],"name"=>$row['urunAdi'],"stokkodu"=>$row['stokkodu'], "image_url"=>$rowImage['fotoyolu'],"fiyat"=> $row['fiyat'],"stokadet"=>$row['adet'],"ay"=>$row['ay'],
+                    array_push($Products, array("id"=>$row["urunID"],"name"=>$row['urunAdi'],"stokkodu"=>$row['stokkodu'], "image_url"=>$rowImage['fotoyolu'],"fiyat"=> $row['fiyat'],"stokadet"=>$row['adet'],"ay"=>$row['ay'],
                    ));
   
                     	
                 }
 
-                print(json_encode(array_reverse($spacecrafts)));
+                print(json_encode(array_reverse($Products)));
             }
             else
             {
@@ -77,6 +72,6 @@ class Spacecrafts
         }
     }
 }
-$spacecrafts=new Spacecrafts();
-$spacecrafts->select();
+$Products=new Products();
+$Products->select();
 ?>
