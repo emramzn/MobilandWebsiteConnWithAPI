@@ -69,11 +69,11 @@ class Spacecrafts
             }
             else
             {
-                print(json_encode(array("PHP EXCEPTION : CAN'T RETRIEVE FROM MYSQL. ")));
+                print(json_encode(array("PHP EXCEPTION : MYSQL cevap vermiyor. ")));
             }
             $con->close();
         }else{
-            print(json_encode(array("PHP EXCEPTION : CAN'T CONNECT TO MYSQL. NULL CONNECTION.")));
+            print(json_encode(array("PHP EXCEPTION : Bağlantı hatası.")));
         }
     }
 }
